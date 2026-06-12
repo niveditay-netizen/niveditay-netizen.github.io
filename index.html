@@ -6,7 +6,7 @@
 <title>Nivedita — Technical Product Manager</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
     --bg:#FAF6F0;
@@ -77,8 +77,8 @@
   @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(124,139,111,.5)}70%{box-shadow:0 0 0 8px rgba(124,139,111,0)}100%{box-shadow:0 0 0 0 rgba(124,139,111,0)}}
   h1{font-family:'Fraunces',serif;font-weight:500;font-size:clamp(44px,7vw,76px);line-height:1.02;letter-spacing:-.025em;margin-bottom:22px}
   h1 .accent{font-style:italic;color:var(--clay)}
-  .role{font-size:clamp(19px,2.6vw,24px);font-weight:600;color:var(--ink);margin-bottom:18px}
-  .role b{color:var(--clay-deep)}
+  .tagline{font-size:clamp(19px,2.6vw,24px);font-weight:600;color:var(--ink);margin-bottom:18px}
+  .tagline b{color:var(--clay-deep)}
   .lede{max-width:620px;font-size:18px;color:var(--ink-soft);line-height:1.65}
   .cta-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:34px}
   .btn{display:inline-flex;align-items:center;gap:9px;padding:13px 22px;border-radius:100px;font-weight:600;font-size:15px;transition:transform .18s,box-shadow .25s,background .2s}
@@ -98,47 +98,53 @@
   .card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);transition:transform .25s,box-shadow .3s,border-color .25s}
   .card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lift);border-color:#E2D4C0}
 
-  /* ---------- experience ---------- */
-  .xp{padding:34px 36px}
-  .xp-top{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:22px}
-  .xp-title{font-family:'Fraunces',serif;font-size:24px;font-weight:600;letter-spacing:-.01em}
-  .yrs{font-size:14px;font-weight:600;color:#fff;background:var(--sage);padding:6px 14px;border-radius:100px}
-  .xp-list{display:grid;gap:14px}
-  .xp-list li{list-style:none;display:flex;gap:14px;font-size:16px;color:var(--ink-soft);align-items:flex-start}
-  .xp-list .tick{flex:none;width:22px;height:22px;border-radius:50%;background:rgba(194,97,63,.1);color:var(--clay);display:grid;place-items:center;font-size:12px;font-weight:700;margin-top:2px}
-  .xp-list b{color:var(--ink);font-weight:600}
+  /* ---------- experience timeline ---------- */
+  .timeline{position:relative;display:grid;gap:24px}
+  .timeline::before{content:"";position:absolute;left:7px;top:14px;bottom:14px;width:2px;background:linear-gradient(var(--clay),rgba(194,97,63,.15));border-radius:2px}
+  @media(max-width:680px){.timeline::before{display:none}}
+  .role{position:relative;padding-left:42px}
+  @media(max-width:680px){.role{padding-left:0}}
+  .role::before{content:"";position:absolute;left:0;top:30px;width:16px;height:16px;border-radius:50%;background:var(--surface);border:3px solid var(--clay);box-shadow:0 0 0 5px var(--bg)}
+  @media(max-width:680px){.role::before{display:none}}
+  .role-card{padding:28px 30px}
+  .role-head{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:6px}
+  .role-title{font-family:'Fraunces',serif;font-size:22px;font-weight:600;letter-spacing:-.01em;line-height:1.2}
+  .role-co{font-size:15.5px;font-weight:600;color:var(--clay-deep);margin-top:3px}
+  .role-meta{text-align:right;font-size:13.5px;color:var(--ink-faint);line-height:1.5;flex:none}
+  .role-meta .dur{display:inline-block;margin-top:4px;font-weight:600;color:#fff;background:var(--sage);padding:3px 11px;border-radius:100px;font-size:12px}
+  .role-meta .badge{display:inline-block;margin-top:4px;font-weight:600;color:var(--clay-deep);background:rgba(194,97,63,.1);padding:3px 11px;border-radius:100px;font-size:12px}
+  .domains{display:flex;flex-wrap:wrap;gap:7px;margin:14px 0 18px}
+  .domain{font-size:12.5px;font-weight:600;color:var(--ink-soft);background:var(--bg-warm);border:1px solid var(--border-soft);padding:5px 11px;border-radius:8px}
+  .did{display:grid;gap:9px;margin-bottom:18px}
+  .did li{list-style:none;display:flex;gap:11px;font-size:15px;color:var(--ink-soft);align-items:flex-start;line-height:1.5}
+  .did .d{flex:none;width:6px;height:6px;border-radius:50%;background:var(--clay);margin-top:8px;opacity:.65}
+  .did b{color:var(--ink);font-weight:600}
+  .metrics{display:flex;flex-wrap:wrap;gap:8px;padding-top:16px;border-top:1px solid var(--border-soft)}
+  .metric{font-size:13px;color:var(--ink-soft);background:linear-gradient(180deg,#FCF6EE,#F7EEE1);border:1px solid var(--border-soft);padding:6px 12px;border-radius:9px;font-weight:500}
+  .metric b{color:var(--clay-deep);font-weight:700}
 
-  /* ---------- skills grid ---------- */
-  .skills{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
-  @media(max-width:720px){.skills{grid-template-columns:1fr}}
-  .skill{padding:26px 28px}
-  .skill-cat{display:flex;align-items:center;gap:11px;font-family:'Fraunces',serif;font-weight:600;font-size:19px;margin-bottom:16px}
-  .ic{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;font-size:17px}
-  .ic-pm{background:rgba(194,97,63,.12)}
-  .ic-ai{background:rgba(124,139,111,.16)}
-  .ic-an{background:rgba(201,154,80,.16)}
-  .ic-cl{background:rgba(224,133,102,.14)}
-  .tags{display:flex;flex-wrap:wrap;gap:8px}
-  .tag{font-size:13.5px;font-weight:500;color:var(--ink-soft);background:var(--bg-warm);border:1px solid var(--border-soft);padding:6px 12px;border-radius:9px;transition:all .18s}
-  .tag:hover{color:var(--clay-deep);border-color:rgba(194,97,63,.3);background:rgba(194,97,63,.06)}
+  /* ---------- skills (minimal list) ---------- */
+  .skill-list{display:grid;margin-left:42px}
+  @media(max-width:620px){.skill-list{margin-left:0}}
+  .skill-row{display:grid;grid-template-columns:150px 1fr;gap:20px;padding:13px 0;border-top:1px solid var(--border-soft)}
+  .skill-row:last-child{border-bottom:1px solid var(--border-soft)}
+  @media(max-width:620px){.skill-row{grid-template-columns:1fr;gap:5px;padding:14px 0}}
+  .skill-name{font-family:'Fraunces',serif;font-weight:600;font-size:17px;color:var(--ink);letter-spacing:-.01em}
+  .skill-items{font-size:15px;color:var(--ink-soft);line-height:1.6;align-self:center}
+  .skill-items span{white-space:nowrap}
+  .skill-items i{color:var(--border);font-style:normal;margin:0 8px}
 
-  /* ---------- project ---------- */
-  .project{padding:0;overflow:hidden}
-  .proj-grid{display:grid;grid-template-columns:1.3fr 1fr}
-  @media(max-width:720px){.proj-grid{grid-template-columns:1fr}}
-  .proj-main{padding:36px 38px}
-  .proj-side{background:var(--bg-warm);border-left:1px solid var(--border);padding:30px 32px;display:flex;flex-direction:column;justify-content:center;gap:18px}
-  @media(max-width:720px){.proj-side{border-left:none;border-top:1px solid var(--border)}}
-  .proj-name{font-family:'Fraunces',serif;font-size:27px;font-weight:600;letter-spacing:-.01em;display:flex;align-items:center;gap:10px;margin-bottom:14px}
-  .proj-name .arrow{font-size:18px;color:var(--clay);transition:transform .2s}
-  .project:hover .arrow{transform:translate(3px,-3px)}
-  .proj-desc{font-size:16.5px;color:var(--ink-soft);margin-bottom:22px;max-width:46ch}
-  .stack{display:flex;flex-wrap:wrap;gap:8px}
-  .chip{font-size:13px;font-weight:600;color:var(--clay-deep);background:rgba(194,97,63,.09);border:1px solid rgba(194,97,63,.18);padding:6px 12px;border-radius:8px}
-  .stat-row{display:flex;align-items:baseline;gap:10px}
-  .stat-k{font-size:13px;font-weight:600;color:var(--ink-faint);text-transform:uppercase;letter-spacing:.03em;width:74px;flex:none}
-  .stat-v{font-size:15px;font-weight:600;color:var(--ink)}
-  .live{display:inline-flex;align-items:center;gap:7px;font-size:14px;font-weight:600;color:var(--sage)}
+  /* ---------- projects (stacked, nerdy) ---------- */
+  .projects-col{display:grid;gap:16px}
+  .proj{padding:24px 28px;position:relative}
+  .proj-slug{font-family:'JetBrains Mono',monospace;font-size:12.5px;font-weight:500;color:var(--clay-deep);display:inline-flex;align-items:center;gap:7px;margin-bottom:11px;background:rgba(194,97,63,.07);border:1px solid rgba(194,97,63,.16);padding:4px 10px;border-radius:7px}
+  .proj-slug .arrow{transition:transform .2s}
+  .proj:hover .arrow{transform:translate(3px,-3px)}
+  .proj-name{font-family:'Fraunces',serif;font-size:23px;font-weight:600;letter-spacing:-.01em;line-height:1.2;margin-bottom:11px}
+  .proj-desc{font-size:15.5px;color:var(--ink-soft);line-height:1.6;margin-bottom:18px;max-width:74ch}
+  .proj-stack{font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--ink-soft);background:var(--bg-warm);border:1px solid var(--border-soft);border-radius:10px;padding:11px 14px;line-height:1.7;word-break:break-word}
+  .proj-stack .pr{color:var(--sage);font-weight:600;margin-right:8px;user-select:none}
+  .proj-stack b{color:var(--clay-deep);font-weight:600}
 
   /* ---------- learning ---------- */
   .learn-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
@@ -148,26 +154,20 @@
   .learn span{font-size:16px;font-weight:500;color:var(--ink)}
 
   /* ---------- facts ---------- */
-  .facts{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
-  @media(max-width:720px){.facts{grid-template-columns:repeat(2,1fr)}}
+  .facts{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  @media(max-width:720px){.facts{grid-template-columns:1fr}}
   .fact{padding:28px 22px;text-align:center}
   .fact .big{font-family:'Fraunces',serif;font-size:38px;font-weight:600;color:var(--clay);letter-spacing:-.02em;line-height:1}
   .fact .lbl{font-size:14px;color:var(--ink-soft);margin-top:10px;font-weight:500;line-height:1.4}
 
-  /* ---------- connect ---------- */
-  .connect{background:linear-gradient(135deg,#FBF4EC,#F6EDE0);border:1px solid var(--border);border-radius:28px;padding:48px 44px;position:relative;overflow:hidden}
-  .connect::after{content:"";position:absolute;right:-60px;top:-60px;width:240px;height:240px;border-radius:50%;background:radial-gradient(circle,rgba(224,133,102,.22),transparent 70%)}
-  .connect h2{margin-bottom:10px}
-  .connect p{color:var(--ink-soft);font-size:17px;max-width:540px;margin-bottom:28px}
-  .interests{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-bottom:32px;position:relative}
-  @media(max-width:620px){.interests{grid-template-columns:1fr}}
-  .interest{display:flex;gap:12px;align-items:flex-start;background:rgba(255,255,255,.6);border:1px solid var(--border-soft);border-radius:14px;padding:16px 18px}
-  .interest b{display:block;color:var(--ink);font-size:15.5px;font-weight:600}
-  .interest small{color:var(--ink-soft);font-size:14px}
-  .interest .e{font-size:18px;margin-top:1px}
-  .reach{display:flex;flex-wrap:wrap;gap:22px;align-items:center;position:relative}
-  .reach-item{display:flex;align-items:center;gap:9px;font-size:15px;color:var(--ink-soft);font-weight:500}
-  .reach-item b{color:var(--ink)}
+  /* ---------- connect (simple, link-focused) ---------- */
+  .connect-line{font-size:19px;color:var(--ink-soft);margin-bottom:30px;line-height:1.65}
+  .connect-line b{color:var(--ink);font-weight:600}
+  .links{display:flex;flex-wrap:wrap;gap:13px}
+  .link-btn{display:inline-flex;align-items:center;gap:9px;font-size:15px;font-weight:600;color:var(--ink);font-family:'JetBrains Mono',monospace;padding:12px 20px;border:1px solid var(--border);border-radius:100px;background:var(--surface);transition:transform .18s,box-shadow .25s,border-color .2s,color .2s}
+  .link-btn:hover{transform:translateY(-2px);border-color:var(--clay);color:var(--clay-deep);box-shadow:var(--shadow)}
+  .link-btn .arr{transition:transform .2s;color:var(--clay)}
+  .link-btn:hover .arr{transform:translate(3px,-3px)}
 
   /* ---------- footer ---------- */
   footer{text-align:center;padding:60px 0 70px}
@@ -193,11 +193,10 @@
 
 <header>
   <div class="wrap">
-    <div class="eyebrow reveal" style="animation-delay:.05s"><span class="pulse"></span>Open to product collaboration</div>
-    <h1 class="reveal" style="animation-delay:.12s">Hi, I'm Nivedita <span class="wave">👋</span><br>I build <span class="accent">thoughtful</span> products.</h1>
-    <p class="role reveal" style="animation-delay:.2s"><b>Technical Product Manager</b> &amp; builder — AI agents, search systems &amp; consumer tech.</p>
-    <p class="lede reveal" style="animation-delay:.28s">I work at the intersection of product strategy and engineering, translating complex technical challenges into meaningful user experiences. With 5+ years building products that scale, I'm currently exploring automation, cloud infrastructure, and AI-driven applications.</p>
-    <div class="cta-row reveal" style="animation-delay:.36s">
+    <h1 class="reveal" style="animation-delay:.05s">Hi, I'm Nivedita <span class="wave">👋</span><br>I build <span class="accent">thoughtful</span> products.</h1>
+    <p class="tagline reveal" style="animation-delay:.14s"><b>Growth Product Manager</b> — consumer &amp; enterprise.</p>
+    <p class="lede reveal" style="animation-delay:.22s">I take tangled technical problems — search, AI agents, automation — and turn them into products that grow. 5+ years shipping across consumer and enterprise.</p>
+    <div class="cta-row reveal" style="animation-delay:.3s">
       <a class="btn btn-primary" href="#projects">See my work <span>→</span></a>
       <a class="btn btn-ghost" href="https://www.linkedin.com/in/nivedita-yadav/" target="_blank" rel="noopener">Connect on LinkedIn</a>
     </div>
@@ -211,19 +210,109 @@
     <div class="sec-head reveal">
       <span class="sec-emoji">🎯</span>
       <h2>Experience</h2>
-      <span class="sec-sub">What I've been building</span>
     </div>
-    <div class="card xp reveal" style="animation-delay:.08s">
-      <div class="xp-top">
-        <div class="xp-title">Search, AI Agents &amp; Consumer Tech</div>
-        <span class="yrs">5+ years</span>
+    <div class="timeline">
+
+      <div class="role reveal" style="animation-delay:.05s">
+        <div class="card role-card">
+          <div class="role-head">
+            <div>
+              <div class="role-title">Senior Technical PM</div>
+              <div class="role-co">Amazon Web Services · Intern</div>
+            </div>
+            <div class="role-meta">May – Aug 2025<br>Seattle, USA</div>
+          </div>
+          <div class="domains"><span class="domain">Agentic AI</span><span class="domain">Compliance Automation</span></div>
+          <ul class="did">
+            <li><span class="d"></span><span>Identified the market opportunity for a <b>developer-integrated Agentic AI compliance</b> solution</span></li>
+            <li><span class="d"></span><span>Translated <b>10+ enterprise &amp; startup interviews</b> into a product vision &amp; roadmap</span></li>
+            <li><span class="d"></span><span>Defined capabilities for real-time developer compliance guidance &amp; <b>automated evidence collection</b></span></li>
+          </ul>
+          <div class="metrics">
+            <span class="metric"><b>$800M+</b> market opportunity sized</span>
+            <span class="metric"><b>Leadership buy-in</b> secured</span>
+            <span class="metric"><b>70%</b> faster audit readiness</span>
+          </div>
+        </div>
       </div>
-      <ul class="xp-list">
-        <li><span class="tick">✓</span><span>Led product strategy for <b>search and discovery systems</b> at scale</span></li>
-        <li><span class="tick">✓</span><span>Designed and iterated on <b>AI agent architectures</b> and workflows</span></li>
-        <li><span class="tick">✓</span><span>Built cross-functional teams across <b>engineering, design &amp; data</b> to ship consumer-facing features</span></li>
-        <li><span class="tick">✓</span><span>Deep expertise in <b>product thinking, technical architecture &amp; data-driven decisions</b></span></li>
-      </ul>
+
+      <div class="role reveal" style="animation-delay:.1s">
+        <div class="card role-card">
+          <div class="role-head">
+            <div>
+              <div class="role-title">Product Manager — AI Search Platform</div>
+              <div class="role-co">Gartner</div>
+            </div>
+            <div class="role-meta">Apr 2022 – Dec 2024<br>Gurgaon, India</div>
+          </div>
+          <div class="domains"><span class="domain">AI Search</span><span class="domain">Ranking &amp; Retrieval</span><span class="domain">NLP / Search Infra</span></div>
+          <ul class="did">
+            <li><span class="d"></span><span>Owned the <b>end-to-end AI search platform</b>, optimizing retrieval and ranking — drove <b>$10M+ in incremental revenue</b></span></li>
+            <li><span class="d"></span><span>Launched <b>semantic / vector search</b> — 2% lift in query success</span></li>
+            <li><span class="d"></span><span>Improved <b>abbreviation handling in the LTR model</b> (45% of query volume); +1.2% query success</span></li>
+            <li><span class="d"></span><span>Raised <b>spell-check accuracy &amp; coverage by 25%</b> via A/B-tested ranking changes</span></li>
+          </ul>
+          <div class="metrics">
+            <span class="metric"><b>$10M+</b> incremental revenue</span>
+            <span class="metric"><b>2%</b> query success lift (vector search)</span>
+            <span class="metric"><b>44% → 33%</b> abandonment (query rewrite)</span>
+            <span class="metric"><b>18%</b> doc engagement lift</span>
+            <span class="metric"><b>12%</b> repeat visits · <b>2×</b> CTR</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="role reveal" style="animation-delay:.15s">
+        <div class="card role-card">
+          <div class="role-head">
+            <div>
+              <div class="role-title">Associate PM</div>
+              <div class="role-co">Apollo 24/7</div>
+            </div>
+            <div class="role-meta">Nov 2020 – Mar 2022<br>Gurgaon, India</div>
+          </div>
+          <div class="domains"><span class="domain">Health-Tech</span><span class="domain">Consultation UX</span><span class="domain">Growth</span></div>
+          <ul class="did">
+            <li><span class="d"></span><span><b>Delayed consults:</b> proactive in-app messaging at 5 &amp; 15 min marks with rescheduling options</span></li>
+            <li><span class="d"></span><span><b>Rx favorites:</b> doctor-side prescription templates; cut issuance time 11→8 min</span></li>
+            <li><span class="d"></span><span><b>Rx flow redesign:</b> rescued a failed launch via rapid user interviews &amp; redesign in one week</span></li>
+            <li><span class="d"></span><span><b>International consults:</b> 0→1 cross-border program (landing page + Zoom + pricing)</span></li>
+            <li><span class="d"></span><span><b>Notifications:</b> cross-platform service for patients &amp; providers</span></li>
+            <li><span class="d"></span><span><b>SEO:</b> 100+ optimized landing pages</span></li>
+          </ul>
+          <div class="metrics">
+            <span class="metric"><b>18%</b> support ticket reduction</span>
+            <span class="metric"><b>11%</b> ticket drop (delays)</span>
+            <span class="metric"><b>30% → 18%</b> delayed Rx rate</span>
+            <span class="metric"><b>50%</b> faster Rx creation</span>
+            <span class="metric"><b>$300K</b> revenue in 6 months (intl.)</span>
+            <span class="metric"><b>6,000+</b> intl. consults in 6 months</span>
+            <span class="metric"><b>18%</b> CTR on notification campaigns</span>
+            <span class="metric"><b>30%</b> web traffic increase</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="role reveal" style="animation-delay:.2s">
+        <div class="card role-card">
+          <div class="role-head">
+            <div>
+              <div class="role-title">Management Associate</div>
+              <div class="role-co">HSBC</div>
+            </div>
+            <div class="role-meta">Jun 2018 – Jun 2020<br>Bangalore, India</div>
+          </div>
+          <div class="domains"><span class="domain">Corporate Banking</span></div>
+          <ul class="did">
+            <li><span class="d"></span><span>Managed a corporate lending portfolio; analyzed client needs &amp; optimized product mix</span></li>
+          </ul>
+          <div class="metrics">
+            <span class="metric"><b>22%</b> revenue growth</span>
+            <span class="metric"><b>$600M</b> portfolio managed</span>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -233,32 +322,23 @@
     <div class="sec-head reveal">
       <span class="sec-emoji">🔧</span>
       <h2>Skills &amp; Tools</h2>
-      <span class="sec-sub">My everyday toolkit</span>
     </div>
-    <div class="skills">
-      <div class="card skill reveal" style="animation-delay:.05s">
-        <div class="skill-cat"><span class="ic ic-pm">📐</span>Product Management</div>
-        <div class="tags">
-          <span class="tag">Roadmapping</span><span class="tag">User Research</span><span class="tag">A/B Testing</span><span class="tag">Jira</span><span class="tag">Figma</span>
-        </div>
+    <div class="skill-list reveal" style="animation-delay:.06s">
+      <div class="skill-row">
+        <div class="skill-name">Product</div>
+        <div class="skill-items"><span>Roadmapping</span><i>·</i><span>User Research</span><i>·</i><span>A/B Testing</span><i>·</i><span>Jira</span><i>·</i><span>Figma</span></div>
       </div>
-      <div class="card skill reveal" style="animation-delay:.12s">
-        <div class="skill-cat"><span class="ic ic-ai">🤖</span>AI / ML Focus</div>
-        <div class="tags">
-          <span class="tag">LLMs</span><span class="tag">RAG</span><span class="tag">MCP</span><span class="tag">LLM Evaluation</span><span class="tag">AI Agents</span><span class="tag">Guardrails</span><span class="tag">Prompt Engineering</span>
-        </div>
+      <div class="skill-row">
+        <div class="skill-name">AI / ML</div>
+        <div class="skill-items"><span>LLMs</span><i>·</i><span>RAG</span><i>·</i><span>MCP</span><i>·</i><span>LLM Evaluation</span><i>·</i><span>AI Agents</span><i>·</i><span>Guardrails</span><i>·</i><span>Prompt Engineering</span></div>
       </div>
-      <div class="card skill reveal" style="animation-delay:.19s">
-        <div class="skill-cat"><span class="ic ic-an">📊</span>Analytics</div>
-        <div class="tags">
-          <span class="tag">Google Analytics</span><span class="tag">SQL</span><span class="tag">Tableau</span><span class="tag">Data Visualization</span>
-        </div>
+      <div class="skill-row">
+        <div class="skill-name">Analytics</div>
+        <div class="skill-items"><span>Google Analytics</span><i>·</i><span>SQL</span><i>·</i><span>Tableau</span><i>·</i><span>Data Viz</span></div>
       </div>
-      <div class="card skill reveal" style="animation-delay:.26s">
-        <div class="skill-cat"><span class="ic ic-cl">☁️</span>Cloud Infrastructure</div>
-        <div class="tags">
-          <span class="tag">Google Cloud</span><span class="tag">Serverless</span><span class="tag">Cloud Storage</span><span class="tag">Text-to-Speech</span><span class="tag">APIs</span>
-        </div>
+      <div class="skill-row">
+        <div class="skill-name">Cloud</div>
+        <div class="skill-items"><span>Google Cloud</span><i>·</i><span>Serverless</span><i>·</i><span>Cloud Storage</span><i>·</i><span>Text-to-Speech</span><i>·</i><span>APIs</span></div>
       </div>
     </div>
   </div>
@@ -269,24 +349,21 @@
     <div class="sec-head reveal">
       <span class="sec-emoji">🚀</span>
       <h2>Projects</h2>
-      <span class="sec-sub">Things I've shipped</span>
     </div>
-    <a class="card project reveal" href="https://github.com/niveditay-netizen/tldr-audio-briefing" target="_blank" rel="noopener" style="animation-delay:.08s">
-      <div class="proj-grid">
-        <div class="proj-main">
-          <div class="proj-name">TLDR Audio Briefing <span class="arrow">↗</span></div>
-          <p class="proj-desc">An automated daily task that converts TLDR newsletter emails into conversational audio briefings, delivered straight to Slack.</p>
-          <div class="stack">
-            <span class="chip">Python</span><span class="chip">Google Cloud TTS</span><span class="chip">Cloud Storage</span><span class="chip">Slack API</span><span class="chip">Claude Code</span>
-          </div>
-        </div>
-        <div class="proj-side">
-          <div class="stat-row"><span class="stat-k">Hosting</span><span class="stat-v">Fully serverless</span></div>
-          <div class="stat-row"><span class="stat-k">Cost</span><span class="stat-v">~$0.03 / day</span></div>
-          <div class="stat-row"><span class="stat-k">Status</span><span class="live"><span class="pulse"></span>Deployed &amp; tested</span></div>
-        </div>
-      </div>
-    </a>
+    <div class="projects-col">
+      <a class="card proj reveal" href="https://github.com/niveditay-netizen/semantic-search-eval" target="_blank" rel="noopener" style="animation-delay:.06s">
+        <span class="proj-slug">niveditay-netizen/semantic-search-eval <span class="arrow">↗</span></span>
+        <div class="proj-name">Semantic Search Eval</div>
+        <p class="proj-desc">A search-relevance eval framework for streaming catalogs that pits two retrieval pipelines head-to-head: cross-encoder reranking alone vs. an LLM relevance filter added before the reranker. Run on a 1,000-title TMDb catalog with 45 auto-generated queries and ~1,800 Claude-labeled pairs, it lifts precision@5 from 0.84 to 0.95 overall — biggest gains on mood and decade queries, zero effect where retrieval is already at ceiling.</p>
+        <div class="proj-stack"><span class="pr">$</span><b>stack</b> &nbsp;python · bm25 · sentence-transformers · cross-encoder · llm-as-judge · claude</div>
+      </a>
+      <a class="card proj reveal" href="https://github.com/niveditay-netizen/tldr-audio-briefing" target="_blank" rel="noopener" style="animation-delay:.12s">
+        <span class="proj-slug">niveditay-netizen/tldr-audio-briefing <span class="arrow">↗</span></span>
+        <div class="proj-name">TLDR Audio Briefing</div>
+        <p class="proj-desc">An automated daily task that turns TLDR newsletter emails into conversational audio briefings, delivered straight to Slack. Fully serverless, running end-to-end for about three cents a day — built, tested, and deployed.</p>
+        <div class="proj-stack"><span class="pr">$</span><b>stack</b> &nbsp;python · google-cloud-tts · cloud-storage · slack-api · claude-code</div>
+      </a>
+    </div>
   </div>
 </section>
 
@@ -295,7 +372,6 @@
     <div class="sec-head reveal">
       <span class="sec-emoji">📚</span>
       <h2>What I'm Learning</h2>
-      <span class="sec-sub">Always a work in progress</span>
     </div>
     <div class="learn-grid">
       <div class="card learn reveal" style="animation-delay:.05s"><span class="num">01</span><span>Building AI agents &amp; agentic workflows</span></div>
@@ -306,47 +382,30 @@
   </div>
 </section>
 
-<section id="facts">
-  <div class="wrap">
-    <div class="facts">
-      <div class="card fact reveal" style="animation-delay:.05s"><div class="big">5+</div><div class="lbl">Years in product<br>(Search, AI, Consumer)</div></div>
-      <div class="card fact reveal" style="animation-delay:.12s"><div class="big">M+</div><div class="lbl">Users reached by<br>products I've built</div></div>
-      <div class="card fact reveal" style="animation-delay:.19s"><div class="big">∞</div><div class="lbl">Curiosity for<br>automation &amp; scale</div></div>
-      <div class="card fact reveal" style="animation-delay:.26s"><div class="big">1</div><div class="lbl">New thing always<br>being built</div></div>
-    </div>
-  </div>
-</section>
-
 <section id="connect">
   <div class="wrap">
-    <div class="connect reveal">
-      <div class="sec-head" style="margin-bottom:18px"><span class="sec-emoji">💬</span><h2>Let's Connect</h2></div>
-      <p>I'm always interested in good problems and the people building toward them. A few things I love talking about:</p>
-      <div class="interests">
-        <div class="interest"><span class="e">🤝</span><div><b>Product collaboration</b><small>Building cool things together</small></div></div>
-        <div class="interest"><span class="e">🛠️</span><div><b>Technical deep-dives</b><small>Architecture, design, automation</small></div></div>
-        <div class="interest"><span class="e">✨</span><div><b>AI &amp; automation</b><small>LLM applications, agent design</small></div></div>
-        <div class="interest"><span class="e">💡</span><div><b>Your projects</b><small>Love seeing what others build</small></div></div>
-      </div>
-      <div class="reach">
-        <span class="reach-item">📍 <b>United States</b></span>
-        <span class="reach-item">🔗 <a href="https://www.linkedin.com/in/nivedita-yadav/" target="_blank" rel="noopener"><b>nivedita-yadav</b></a></span>
-        <span class="reach-item">💌 Open an issue or discussion on a project</span>
-      </div>
+    <div class="sec-head reveal"><span class="sec-emoji">💬</span><h2>Let's Connect</h2></div>
+    <p class="connect-line reveal" style="animation-delay:.08s">Always up for good problems and the people building toward them — product, AI, automation, or whatever you're working on.</p>
+    <div class="links reveal" style="animation-delay:.14s">
+      <a class="link-btn" href="https://www.linkedin.com/in/nivedita-yadav/" target="_blank" rel="noopener">LinkedIn <span class="arr">↗</span></a>
+      <a class="link-btn" href="https://github.com/niveditay-netizen" target="_blank" rel="noopener">GitHub <span class="arr">↗</span></a>
+      <a class="link-btn" id="mail" href="#"><span class="mail-text">Email</span> <span class="arr">↗</span></a>
     </div>
   </div>
 </section>
 
-<footer>
-  <div class="wrap">
-    <p class="foot-line">Check out my projects &amp; feel free to reach out 👇</p>
-    <div class="foot-links">
-      <a class="btn btn-primary" href="https://github.com/niveditay-netizen/tldr-audio-briefing" target="_blank" rel="noopener">TLDR Audio Briefing →</a>
-      <a class="btn btn-ghost" href="https://www.linkedin.com/in/nivedita-yadav/" target="_blank" rel="noopener">LinkedIn</a>
-    </div>
-    <p class="foot-meta">Designed &amp; built by Nivedita · Always building something new</p>
-  </div>
-</footer>
+<script>
+  (function(){
+    var u=['n','i','v','e','d','i','t','y'].join('');
+    var d=['tepper','cmu','edu'].join('.');
+    var a=u+String.fromCharCode(64)+d;
+    var el=document.getElementById('mail');
+    if(el){
+      el.setAttribute('href','mailto:'+a);
+      el.querySelector('.mail-text').textContent=a;
+    }
+  })();
+</script>
 
 </body>
 </html>
