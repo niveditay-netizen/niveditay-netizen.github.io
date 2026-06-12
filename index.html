@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nivedita — Technical Product Manager</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#FAF6F0;
+    --bg-warm:#F4EDE3;
+    --surface:#FFFCF7;
+    --ink:#2A2521;
+    --ink-soft:#6A6157;
+    --ink-faint:#928879;
+    --clay:#C2613F;
+    --clay-deep:#A84E30;
+    --coral:#E08566;
+    --sage:#7C8B6F;
+    --gold:#C99A50;
+    --border:#EAE0D2;
+    --border-soft:#F0E8DC;
+    --shadow:0 1px 2px rgba(60,45,30,.04),0 8px 24px rgba(60,45,30,.05);
+    --shadow-lift:0 2px 4px rgba(60,45,30,.05),0 18px 40px rgba(60,45,30,.09);
+    --radius:22px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Hanken Grotesk',sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  /* atmospheric warm gradient blooms */
+  body::before{
+    content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
+    background:
+      radial-gradient(60vw 60vw at 82% -8%, rgba(224,133,102,.16), transparent 60%),
+      radial-gradient(50vw 50vw at -10% 18%, rgba(124,139,111,.10), transparent 55%),
+      radial-gradient(46vw 46vw at 50% 108%, rgba(201,154,80,.10), transparent 60%);
+  }
+  .wrap{max-width:1020px;margin:0 auto;padding:0 28px}
+  a{color:inherit;text-decoration:none}
+
+  /* ---------- nav ---------- */
+  nav{
+    position:sticky;top:0;z-index:50;
+    backdrop-filter:saturate(1.4) blur(12px);
+    background:rgba(250,246,240,.72);
+    border-bottom:1px solid var(--border-soft);
+  }
+  .nav-in{max-width:1020px;margin:0 auto;padding:16px 28px;display:flex;align-items:center;justify-content:space-between}
+  .brand{font-family:'Fraunces',serif;font-weight:600;font-size:19px;letter-spacing:-.01em;display:flex;align-items:center;gap:10px}
+  .dot{width:10px;height:10px;border-radius:50%;background:var(--clay);box-shadow:0 0 0 4px rgba(194,97,63,.15)}
+  .nav-links{display:flex;gap:30px;font-size:14.5px;font-weight:500;color:var(--ink-soft)}
+  .nav-links a{position:relative;transition:color .2s}
+  .nav-links a::after{content:"";position:absolute;left:0;bottom:-4px;width:0;height:2px;background:var(--clay);transition:width .25s;border-radius:2px}
+  .nav-links a:hover{color:var(--ink)}
+  .nav-links a:hover::after{width:100%}
+  @media(max-width:680px){.nav-links{display:none}}
+
+  /* ---------- reveal animation ---------- */
+  .reveal{opacity:0;transform:translateY(22px);animation:rise .9s cubic-bezier(.2,.7,.2,1) forwards}
+  @keyframes rise{to{opacity:1;transform:none}}
+
+  /* ---------- hero ---------- */
+  header{padding:96px 0 70px}
+  .wave{display:inline-block;animation:wave 2.6s ease-in-out 1s 2;transform-origin:70% 70%}
+  @keyframes wave{0%,60%,100%{transform:rotate(0)}10%{transform:rotate(16deg)}20%{transform:rotate(-10deg)}30%{transform:rotate(16deg)}40%{transform:rotate(-6deg)}50%{transform:rotate(8deg)}}
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--clay-deep);background:rgba(194,97,63,.09);border:1px solid rgba(194,97,63,.18);padding:7px 14px;border-radius:100px;margin-bottom:26px}
+  .pulse{width:7px;height:7px;border-radius:50%;background:var(--sage);box-shadow:0 0 0 0 rgba(124,139,111,.5);animation:pulse 2.2s infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(124,139,111,.5)}70%{box-shadow:0 0 0 8px rgba(124,139,111,0)}100%{box-shadow:0 0 0 0 rgba(124,139,111,0)}}
+  h1{font-family:'Fraunces',serif;font-weight:500;font-size:clamp(44px,7vw,76px);line-height:1.02;letter-spacing:-.025em;margin-bottom:22px}
+  h1 .accent{font-style:italic;color:var(--clay)}
+  .role{font-size:clamp(19px,2.6vw,24px);font-weight:600;color:var(--ink);margin-bottom:18px}
+  .role b{color:var(--clay-deep)}
+  .lede{max-width:620px;font-size:18px;color:var(--ink-soft);line-height:1.65}
+  .cta-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:34px}
+  .btn{display:inline-flex;align-items:center;gap:9px;padding:13px 22px;border-radius:100px;font-weight:600;font-size:15px;transition:transform .18s,box-shadow .25s,background .2s}
+  .btn-primary{background:var(--clay);color:#fff;box-shadow:0 6px 18px rgba(194,97,63,.28)}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(194,97,63,.36);background:var(--clay-deep)}
+  .btn-ghost{background:var(--surface);border:1px solid var(--border);color:var(--ink)}
+  .btn-ghost:hover{transform:translateY(-2px);box-shadow:var(--shadow);border-color:var(--clay)}
+
+  /* ---------- section frame ---------- */
+  section{padding:54px 0}
+  .sec-head{display:flex;align-items:baseline;gap:16px;margin-bottom:34px}
+  .sec-emoji{font-size:26px}
+  h2{font-family:'Fraunces',serif;font-weight:500;font-size:clamp(28px,4vw,40px);letter-spacing:-.02em}
+  .sec-sub{color:var(--ink-faint);font-size:15px;font-weight:500;margin-left:auto}
+
+  /* ---------- card base ---------- */
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);transition:transform .25s,box-shadow .3s,border-color .25s}
+  .card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lift);border-color:#E2D4C0}
+
+  /* ---------- experience ---------- */
+  .xp{padding:34px 36px}
+  .xp-top{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:22px}
+  .xp-title{font-family:'Fraunces',serif;font-size:24px;font-weight:600;letter-spacing:-.01em}
+  .yrs{font-size:14px;font-weight:600;color:#fff;background:var(--sage);padding:6px 14px;border-radius:100px}
+  .xp-list{display:grid;gap:14px}
+  .xp-list li{list-style:none;display:flex;gap:14px;font-size:16px;color:var(--ink-soft);align-items:flex-start}
+  .xp-list .tick{flex:none;width:22px;height:22px;border-radius:50%;background:rgba(194,97,63,.1);color:var(--clay);display:grid;place-items:center;font-size:12px;font-weight:700;margin-top:2px}
+  .xp-list b{color:var(--ink);font-weight:600}
+
+  /* ---------- skills grid ---------- */
+  .skills{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+  @media(max-width:720px){.skills{grid-template-columns:1fr}}
+  .skill{padding:26px 28px}
+  .skill-cat{display:flex;align-items:center;gap:11px;font-family:'Fraunces',serif;font-weight:600;font-size:19px;margin-bottom:16px}
+  .ic{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;font-size:17px}
+  .ic-pm{background:rgba(194,97,63,.12)}
+  .ic-ai{background:rgba(124,139,111,.16)}
+  .ic-an{background:rgba(201,154,80,.16)}
+  .ic-cl{background:rgba(224,133,102,.14)}
+  .tags{display:flex;flex-wrap:wrap;gap:8px}
+  .tag{font-size:13.5px;font-weight:500;color:var(--ink-soft);background:var(--bg-warm);border:1px solid var(--border-soft);padding:6px 12px;border-radius:9px;transition:all .18s}
+  .tag:hover{color:var(--clay-deep);border-color:rgba(194,97,63,.3);background:rgba(194,97,63,.06)}
+
+  /* ---------- project ---------- */
+  .project{padding:0;overflow:hidden}
+  .proj-grid{display:grid;grid-template-columns:1.3fr 1fr}
+  @media(max-width:720px){.proj-grid{grid-template-columns:1fr}}
+  .proj-main{padding:36px 38px}
+  .proj-side{background:var(--bg-warm);border-left:1px solid var(--border);padding:30px 32px;display:flex;flex-direction:column;justify-content:center;gap:18px}
+  @media(max-width:720px){.proj-side{border-left:none;border-top:1px solid var(--border)}}
+  .proj-name{font-family:'Fraunces',serif;font-size:27px;font-weight:600;letter-spacing:-.01em;display:flex;align-items:center;gap:10px;margin-bottom:14px}
+  .proj-name .arrow{font-size:18px;color:var(--clay);transition:transform .2s}
+  .project:hover .arrow{transform:translate(3px,-3px)}
+  .proj-desc{font-size:16.5px;color:var(--ink-soft);margin-bottom:22px;max-width:46ch}
+  .stack{display:flex;flex-wrap:wrap;gap:8px}
+  .chip{font-size:13px;font-weight:600;color:var(--clay-deep);background:rgba(194,97,63,.09);border:1px solid rgba(194,97,63,.18);padding:6px 12px;border-radius:8px}
+  .stat-row{display:flex;align-items:baseline;gap:10px}
+  .stat-k{font-size:13px;font-weight:600;color:var(--ink-faint);text-transform:uppercase;letter-spacing:.03em;width:74px;flex:none}
+  .stat-v{font-size:15px;font-weight:600;color:var(--ink)}
+  .live{display:inline-flex;align-items:center;gap:7px;font-size:14px;font-weight:600;color:var(--sage)}
+
+  /* ---------- learning ---------- */
+  .learn-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+  @media(max-width:620px){.learn-grid{grid-template-columns:1fr}}
+  .learn{padding:22px 24px;display:flex;gap:14px;align-items:center}
+  .learn .num{font-family:'Fraunces',serif;font-size:22px;color:var(--clay);font-weight:600;flex:none}
+  .learn span{font-size:16px;font-weight:500;color:var(--ink)}
+
+  /* ---------- facts ---------- */
+  .facts{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+  @media(max-width:720px){.facts{grid-template-columns:repeat(2,1fr)}}
+  .fact{padding:28px 22px;text-align:center}
+  .fact .big{font-family:'Fraunces',serif;font-size:38px;font-weight:600;color:var(--clay);letter-spacing:-.02em;line-height:1}
+  .fact .lbl{font-size:14px;color:var(--ink-soft);margin-top:10px;font-weight:500;line-height:1.4}
+
+  /* ---------- connect ---------- */
+  .connect{background:linear-gradient(135deg,#FBF4EC,#F6EDE0);border:1px solid var(--border);border-radius:28px;padding:48px 44px;position:relative;overflow:hidden}
+  .connect::after{content:"";position:absolute;right:-60px;top:-60px;width:240px;height:240px;border-radius:50%;background:radial-gradient(circle,rgba(224,133,102,.22),transparent 70%)}
+  .connect h2{margin-bottom:10px}
+  .connect p{color:var(--ink-soft);font-size:17px;max-width:540px;margin-bottom:28px}
+  .interests{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-bottom:32px;position:relative}
+  @media(max-width:620px){.interests{grid-template-columns:1fr}}
+  .interest{display:flex;gap:12px;align-items:flex-start;background:rgba(255,255,255,.6);border:1px solid var(--border-soft);border-radius:14px;padding:16px 18px}
+  .interest b{display:block;color:var(--ink);font-size:15.5px;font-weight:600}
+  .interest small{color:var(--ink-soft);font-size:14px}
+  .interest .e{font-size:18px;margin-top:1px}
+  .reach{display:flex;flex-wrap:wrap;gap:22px;align-items:center;position:relative}
+  .reach-item{display:flex;align-items:center;gap:9px;font-size:15px;color:var(--ink-soft);font-weight:500}
+  .reach-item b{color:var(--ink)}
+
+  /* ---------- footer ---------- */
+  footer{text-align:center;padding:60px 0 70px}
+  .foot-line{font-family:'Fraunces',serif;font-size:22px;font-weight:500;margin-bottom:22px}
+  .foot-links{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+  .foot-meta{margin-top:30px;font-size:13px;color:var(--ink-faint)}
+  hr.soft{border:none;border-top:1px solid var(--border-soft);max-width:1020px;margin:0 auto}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-in">
+    <div class="brand"><span class="dot"></span>Nivedita</div>
+    <div class="nav-links">
+      <a href="#experience">Experience</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#connect">Connect</a>
+    </div>
+  </div>
+</nav>
+
+<header>
+  <div class="wrap">
+    <div class="eyebrow reveal" style="animation-delay:.05s"><span class="pulse"></span>Open to product collaboration</div>
+    <h1 class="reveal" style="animation-delay:.12s">Hi, I'm Nivedita <span class="wave">👋</span><br>I build <span class="accent">thoughtful</span> products.</h1>
+    <p class="role reveal" style="animation-delay:.2s"><b>Technical Product Manager</b> &amp; builder — AI agents, search systems &amp; consumer tech.</p>
+    <p class="lede reveal" style="animation-delay:.28s">I work at the intersection of product strategy and engineering, translating complex technical challenges into meaningful user experiences. With 5+ years building products that scale, I'm currently exploring automation, cloud infrastructure, and AI-driven applications.</p>
+    <div class="cta-row reveal" style="animation-delay:.36s">
+      <a class="btn btn-primary" href="#projects">See my work <span>→</span></a>
+      <a class="btn btn-ghost" href="https://www.linkedin.com/in/nivedita-yadav/" target="_blank" rel="noopener">Connect on LinkedIn</a>
+    </div>
+  </div>
+</header>
+
+<hr class="soft">
+
+<section id="experience">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-emoji">🎯</span>
+      <h2>Experience</h2>
+      <span class="sec-sub">What I've been building</span>
+    </div>
+    <div class="card xp reveal" style="animation-delay:.08s">
+      <div class="xp-top">
+        <div class="xp-title">Search, AI Agents &amp; Consumer Tech</div>
+        <span class="yrs">5+ years</span>
+      </div>
+      <ul class="xp-list">
+        <li><span class="tick">✓</span><span>Led product strategy for <b>search and discovery systems</b> at scale</span></li>
+        <li><span class="tick">✓</span><span>Designed and iterated on <b>AI agent architectures</b> and workflows</span></li>
+        <li><span class="tick">✓</span><span>Built cross-functional teams across <b>engineering, design &amp; data</b> to ship consumer-facing features</span></li>
+        <li><span class="tick">✓</span><span>Deep expertise in <b>product thinking, technical architecture &amp; data-driven decisions</b></span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-emoji">🔧</span>
+      <h2>Skills &amp; Tools</h2>
+      <span class="sec-sub">My everyday toolkit</span>
+    </div>
+    <div class="skills">
+      <div class="card skill reveal" style="animation-delay:.05s">
+        <div class="skill-cat"><span class="ic ic-pm">📐</span>Product Management</div>
+        <div class="tags">
+          <span class="tag">Roadmapping</span><span class="tag">User Research</span><span class="tag">A/B Testing</span><span class="tag">Jira</span><span class="tag">Figma</span>
+        </div>
+      </div>
+      <div class="card skill reveal" style="animation-delay:.12s">
+        <div class="skill-cat"><span class="ic ic-ai">🤖</span>AI / ML Focus</div>
+        <div class="tags">
+          <span class="tag">LLMs</span><span class="tag">RAG</span><span class="tag">MCP</span><span class="tag">LLM Evaluation</span><span class="tag">AI Agents</span><span class="tag">Guardrails</span><span class="tag">Prompt Engineering</span>
+        </div>
+      </div>
+      <div class="card skill reveal" style="animation-delay:.19s">
+        <div class="skill-cat"><span class="ic ic-an">📊</span>Analytics</div>
+        <div class="tags">
+          <span class="tag">Google Analytics</span><span class="tag">SQL</span><span class="tag">Tableau</span><span class="tag">Data Visualization</span>
+        </div>
+      </div>
+      <div class="card skill reveal" style="animation-delay:.26s">
+        <div class="skill-cat"><span class="ic ic-cl">☁️</span>Cloud Infrastructure</div>
+        <div class="tags">
+          <span class="tag">Google Cloud</span><span class="tag">Serverless</span><span class="tag">Cloud Storage</span><span class="tag">Text-to-Speech</span><span class="tag">APIs</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-emoji">🚀</span>
+      <h2>Projects</h2>
+      <span class="sec-sub">Things I've shipped</span>
+    </div>
+    <a class="card project reveal" href="https://github.com/niveditay-netizen/tldr-audio-briefing" target="_blank" rel="noopener" style="animation-delay:.08s">
+      <div class="proj-grid">
+        <div class="proj-main">
+          <div class="proj-name">TLDR Audio Briefing <span class="arrow">↗</span></div>
+          <p class="proj-desc">An automated daily task that converts TLDR newsletter emails into conversational audio briefings, delivered straight to Slack.</p>
+          <div class="stack">
+            <span class="chip">Python</span><span class="chip">Google Cloud TTS</span><span class="chip">Cloud Storage</span><span class="chip">Slack API</span><span class="chip">Claude Code</span>
+          </div>
+        </div>
+        <div class="proj-side">
+          <div class="stat-row"><span class="stat-k">Hosting</span><span class="stat-v">Fully serverless</span></div>
+          <div class="stat-row"><span class="stat-k">Cost</span><span class="stat-v">~$0.03 / day</span></div>
+          <div class="stat-row"><span class="stat-k">Status</span><span class="live"><span class="pulse"></span>Deployed &amp; tested</span></div>
+        </div>
+      </div>
+    </a>
+  </div>
+</section>
+
+<section id="learning">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-emoji">📚</span>
+      <h2>What I'm Learning</h2>
+      <span class="sec-sub">Always a work in progress</span>
+    </div>
+    <div class="learn-grid">
+      <div class="card learn reveal" style="animation-delay:.05s"><span class="num">01</span><span>Building AI agents &amp; agentic workflows</span></div>
+      <div class="card learn reveal" style="animation-delay:.11s"><span class="num">02</span><span>Cloud-native architecture patterns</span></div>
+      <div class="card learn reveal" style="animation-delay:.17s"><span class="num">03</span><span>LLM fine-tuning &amp; prompt engineering</span></div>
+      <div class="card learn reveal" style="animation-delay:.23s"><span class="num">04</span><span>Serverless automation at scale</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="facts">
+  <div class="wrap">
+    <div class="facts">
+      <div class="card fact reveal" style="animation-delay:.05s"><div class="big">5+</div><div class="lbl">Years in product<br>(Search, AI, Consumer)</div></div>
+      <div class="card fact reveal" style="animation-delay:.12s"><div class="big">M+</div><div class="lbl">Users reached by<br>products I've built</div></div>
+      <div class="card fact reveal" style="animation-delay:.19s"><div class="big">∞</div><div class="lbl">Curiosity for<br>automation &amp; scale</div></div>
+      <div class="card fact reveal" style="animation-delay:.26s"><div class="big">1</div><div class="lbl">New thing always<br>being built</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="connect">
+  <div class="wrap">
+    <div class="connect reveal">
+      <div class="sec-head" style="margin-bottom:18px"><span class="sec-emoji">💬</span><h2>Let's Connect</h2></div>
+      <p>I'm always interested in good problems and the people building toward them. A few things I love talking about:</p>
+      <div class="interests">
+        <div class="interest"><span class="e">🤝</span><div><b>Product collaboration</b><small>Building cool things together</small></div></div>
+        <div class="interest"><span class="e">🛠️</span><div><b>Technical deep-dives</b><small>Architecture, design, automation</small></div></div>
+        <div class="interest"><span class="e">✨</span><div><b>AI &amp; automation</b><small>LLM applications, agent design</small></div></div>
+        <div class="interest"><span class="e">💡</span><div><b>Your projects</b><small>Love seeing what others build</small></div></div>
+      </div>
+      <div class="reach">
+        <span class="reach-item">📍 <b>United States</b></span>
+        <span class="reach-item">🔗 <a href="https://www.linkedin.com/in/nivedita-yadav/" target="_blank" rel="noopener"><b>nivedita-yadav</b></a></span>
+        <span class="reach-item">💌 Open an issue or discussion on a project</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p class="foot-line">Check out my projects &amp; feel free to reach out 👇</p>
+    <div class="foot-links">
+      <a class="btn btn-primary" href="https://github.com/niveditay-netizen/tldr-audio-briefing" target="_blank" rel="noopener">TLDR Audio Briefing →</a>
+      <a class="btn btn-ghost" href="https://www.linkedin.com/in/nivedita-yadav/" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+    <p class="foot-meta">Designed &amp; built by Nivedita · Always building something new</p>
+  </div>
+</footer>
+
+</body>
+</html>
